@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- account_reports.pdf_export_main_customer_report is the PDF template
+         for both the Customer Statement and the Follow-up report. The
+         statement handler adds the 'customer_statement' CSS class to
+         options['css_custom_class'] before rendering, so the block below
+         only shows on the statement. -->
+    <template id="pdf_export_main_customer_report_kvs" inherit_id="account_reports.pdf_export_main_customer_report">
+        <xpath expr="//body/div" position="inside">
+            <t t-if="'customer_statement' in (options.get('css_custom_class') or '')">
+                <t t-set="kvs_company" t-value="env.company"/>
+                <div style="margin-top: 24px; page-break-inside: avoid;">
+                    <div t-if="kvs_company.invoice_terms">
+                        <div style="font-weight: bold; margin-bottom: 4px;">Payment Details</div>
+                        <div t-field="kvs_company.invoice_terms"/>
+                    </div>
+                    <div t-if="kvs_company.company_stamp" style="margin-top: 16px; text-align: right;">
+                        <img t-att-src="image_data_uri(kvs_company.company_stamp)"
+                             style="max-height: 140px; max-width: 220px;" alt="Company Stamp"/>
+                    </div>
+                </div>
+            </t>
+        </xpath>
+    </template>
+</odoo>
