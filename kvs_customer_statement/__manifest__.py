@@ -13,8 +13,7 @@ Customises the printed (PDF) Customer Statement from Accounting:
   printed at the bottom of the statement.
 * The company's Default Terms & Conditions (Accounting Settings > Customer
   Invoices > Default Terms & Conditions) - the same payment details that
-  pre-fill every invoice - printed at the bottom of the statement under
-  "Payment Details".
+  pre-fill every invoice - printed at the bottom of the statement as-is.
 
 Only the Customer Statement is changed. The Follow-up report shares the same
 PDF template but is left as it is.
